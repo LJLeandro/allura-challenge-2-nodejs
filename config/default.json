@@ -1,0 +1,11 @@
+{
+    "mysql": {
+        "banco-de-dados": "orcamentodb",
+        "usuario": "root",
+        "senha": ")ye6S5_bmP[j(N}Q",
+        "host": "127.0.0.1"
+    },
+    "api": {
+        "porta": 3000
+    }
+}
