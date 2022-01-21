@@ -1,7 +1,11 @@
-const despesa = require('../models/despesa')
+const tabelaDespesa = require('../models/tabelaDespesa')
 
 module.exports = {
     listarTodasAsDespesas() {
-        return despesa.findAll();
+        return tabelaDespesa.findAll();
+    },
+
+    criarDespesa(despesa) {
+        return tabelaDespesa.create(despesa);
     }
 }

@@ -5,8 +5,8 @@ const config = require('config');
 
 app.use(bodyparser.json())
 
-const roteadorReceita = require('./rotas/receitas')
-const roteadorDespesa = require('./rotas/despesas')
+const roteadorReceita = require('./routes/receitas')
+const roteadorDespesa = require('./routes/despesas')
 
 app.use('/api/orcamento', roteadorReceita);
 app.use('/api/orcamento', roteadorDespesa);

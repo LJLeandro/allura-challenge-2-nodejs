@@ -3,19 +3,11 @@ const instancia = require('../../database')
 
 const opcoes = {
     freezeTableName: true,
-    tableName: 'despesas',
-    timestamps: true,
-    createdAt: 'dataCriacao',
-    updatedAt: 'dataAtualizacao',
-    version: 'versao'
+    tableName: 'receitas',
+    timestamps: false
 }
 
 const colunas = {
-    id: {
-        type: Sequilize.STRING,
-        allowNull: false,
-        primaryKey: true
-    },
     descricao: {
         type: Sequilize.STRING,
         allowNull: false
@@ -30,4 +22,4 @@ const colunas = {
     }
 }
 
-module.exports = instancia.define('despesas', colunas, opcoes)
+module.exports = instancia.define('receitas', colunas, opcoes)
