@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "e0a71b56-2bcb-4b55-b1e0-f1d898fcf331",
+		"name": "Alura - Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "receita - Todas as Receitas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/orcamento/receitas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"orcamento",
+						"receitas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "receita - Receita por Id Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/orcamento/receita/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"orcamento",
+						"receita",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "receita - Nova Receita",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"descricao\": \"Bonus\",\r\n    \"valor\": \"3411\",\r\n    \"data\": \"2022/01/20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/orcamento/receitas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"orcamento",
+						"receitas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "receita - Alterar Receita",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"descricao\": \"Salário Adiantamento\",\r\n    \"valor\": \"2309\",\r\n    \"data\": \"2022/01/20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/orcamento/receitas/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"orcamento",
+						"receitas",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "receita - Remover Receita por Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/orcamento/receita/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"orcamento",
+						"receita",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "despesa - Todas As Despesas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/orcamento/despesas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"orcamento",
+						"despesas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "despesa - Despesa por Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/orcamento/despesa/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"orcamento",
+						"despesa",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "despesa - Alterar Despesa",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"descricao\": \"Conta de Agua\",\r\n    \"valor\": \"140.89\",\r\n    \"data\": \"2022/01/20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/orcamento/despesa/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"orcamento",
+						"despesa",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "despesa - Nova Despesa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"descricao\": \"Cartao de Crédito - Nubank\",\r\n    \"valor\": \"2100\",\r\n    \"data\": \"2022/01/22\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/orcamento/despesas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"orcamento",
+						"despesas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "despesa - Remover Despesa por Id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/orcamento/despesa/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"orcamento",
+						"despesa",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
