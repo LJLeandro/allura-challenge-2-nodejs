@@ -37,6 +37,22 @@ class Despesa {
 
         await despesaRepository.alterarDespesa(this.id, dadosParaAtualizar);
     }
+
+    async validar() {
+        const campos = ['descricao', 'valor', 'data']
+
+        campos.forEach(campo => {
+            const valor = this[campo];
+
+            if (typeof valor !== 'string' || valor.length === 0) {
+                throw new Error(`O campo '${campo}' está inválido`)  
+            }
+        });
+    }
+
+    async remover() {
+        return despesaRepository.removerDespesa(this.id);
+    }
 }
 
 module.exports = Despesa

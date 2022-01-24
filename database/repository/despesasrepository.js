@@ -30,7 +30,11 @@ module.exports = {
             });
     },
 
-    removerDespesa(receita) {
-
+    removerDespesa(id) {
+        return tabelaDespesa.destroy({
+            where: {
+                id: id
+            }
+        })
     }
 }
