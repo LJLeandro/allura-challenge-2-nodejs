@@ -1,10 +1,9 @@
 const roteador = require('express').Router()
-const despesasrepository = require('../../../database/repository/despesasrepository');
-const despesaRepo = require('../../../database/repository/despesasrepository')
+const despesasrepository = require('../../../database/repository/despesas-repository');
 const Despesa = require('../../models/Despesa')
 
 roteador.get('/despesas', async (req, res) => {
-    const resultado = await despesaRepo.listarTodasAsDespesas()
+    const resultado = await despesasrepository.listarTodasAsDespesas()
 
     res.send(JSON.stringify(resultado))
 });
@@ -29,7 +28,7 @@ roteador.post('/despesas', async (req, res) => {
 roteador.get('/despesa/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        const despesa = await despesaRepo.obterDespesaPorId(id);
+        const despesa = await despesasrepository.obterDespesaPorId(id);
         console.log(despesa);
 
         res.send(JSON.stringify(despesa));

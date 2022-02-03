@@ -1,4 +1,4 @@
-const receitaRepository = require('../../database/repository/receitasrepository');
+const receitaRepository = require('../../database/repository/receitas-repository');
 
 class Receita {
     constructor({id, descricao, valor, data}) {

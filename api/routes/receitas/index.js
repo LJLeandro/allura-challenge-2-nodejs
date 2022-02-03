@@ -1,5 +1,5 @@
 const roteador = require('express').Router()
-const receitaRepo = require('../../../database/repository/receitasrepository')
+const receitaRepo = require('../../../database/repository/receitas-repository')
 const Receita = require('../../models/Receita')
 
 roteador.get('/receitas', async (req, res) => {

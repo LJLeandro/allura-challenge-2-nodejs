@@ -1,28 +1,22 @@
-const despesaRepository = require('../../database/repository/despesas-repository');
+const categoriaRepository = require('../../database/repository/categoria-repository');
 
-class Despesa {
-    constructor({id, descricao, valor, data, categoriaId}) {
+class Categoria {
+    constructor({id, descricao}) {
         this.id = id,
-        this.descricao = descricao,
-        this.valor = valor,
-        this.data = data,
-        this.categoriaId = categoriaId
+        this.descricao = descricao
     }
 
     async criar() {
-        const resultado = await despesaRepository.criarDespesa({
-            descricao: this.descricao,
-            valor: this.valor,
-            data: this.data,
-            categoriaId: this.categoriaId
+        const resultado = await categoriaRepository.criarCategoria({
+            descricao: this.descricao
         });
 
         this.id = resultado.id;
     }
 
     async atualizar() {
-        await despesaRepository.obterDespesaPorId(this.id);
-        const campos = ['descricao', 'valor', 'data'];
+        await categoriaRepository.obterCategoriaPorId(this.id);
+        const campos = ['descricao'];
         const dadosParaAtualizar = [];
         
         campos.forEach((campo) => {
@@ -37,11 +31,11 @@ class Despesa {
             throw new Error('Não foram fornecidas dados para atualizar!');
         }
 
-        await despesaRepository.alterarDespesa(this.id, dadosParaAtualizar);
+        await categoriaRepository.alterarCategoria(this.id, dadosParaAtualizar);
     }
 
     async validar() {
-        const campos = ['descricao', 'valor', 'data', 'categoriaId']
+        const campos = ['descricao']
 
         campos.forEach(campo => {
             const valor = this[campo];
@@ -53,8 +47,8 @@ class Despesa {
     }
 
     async remover() {
-        return despesaRepository.removerDespesa(this.id);
+        return categoriaRepository.removerCategoria(this.id);
     }
 }
 
-module.exports = Despesa
+module.exports = Categoria

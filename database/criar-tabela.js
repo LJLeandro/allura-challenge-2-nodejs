@@ -1,5 +1,18 @@
-const modeloDespesa = require('./models/tabelaDespesa')
-const modeloReceita = require('./models/tabelaReceita')
+const entidadeDespesa = require('./models/tabelaDespesa');
+const entidadeReceita = require('./models/tabelaReceita');
+const entidadeCategoria = require('./models/tabelaCategoria');
 
-modeloDespesa.sync().then(() => console.log("Tabela Criada com sucesso."))
-modeloReceita.sync().then(() => console.log("Tabela Criada com sucesso."))
+entidadeReceita.sync().then(() => console.log("Tabela Receitas com sucesso."))
+
+entidadeCategoria.hasMany(entidadeDespesa, {
+    foreignKey: 'categoriaId'
+});
+entidadeCategoria.sync().then(() => {
+    console.log("Tabela Categorias com sucesso.")
+});
+
+// entidadeDespesa.hasOne(entidadeCategoria, {
+//     foreignKey: 'categoriaId'
+// });
+entidadeDespesa.sync().then(() => console.log("Tabela Despesas com sucesso."))
+
