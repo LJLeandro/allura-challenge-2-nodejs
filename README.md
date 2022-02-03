@@ -1,5 +1,8 @@
 <h1>ALURA CHALLENGE 2 - NODE.JS</h1>
 
+<h2> Introdução </h2>
+Estamos desenvolvendo uma aplicação com NodeJS para poder controlar o Orçamento Familiar de uma Familia.
+
 <h2> Preparando MySql </h2>
 Para executar o programa será preciso instalar o docker executar os comandos abaixo para poder se conectar ao MySQL.
 
