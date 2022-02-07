@@ -1,4 +1,5 @@
 const tabelaDespesa = require('../models/tabelaDespesa')
+const Op = require('sequelize').Op;
 
 module.exports = {
     listarTodasAsDespesas() {
@@ -21,6 +22,22 @@ module.exports = {
         }
 
         return encontrado;
+    },
+
+    async obterDespesaPorDescricao(descricao) {
+        const encontrados = await tabelaDespesa.findAll({
+            where: {
+                descricao: {
+                    [Op.like]: `%${descricao}%`
+                }
+            }
+        });
+
+        if (!encontrados) {
+            throw new Error("Despesa não encontrada.");
+        }
+
+        return encontrados;
     },
 
     alterarDespesa(id, despesa) {

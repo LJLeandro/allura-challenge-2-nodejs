@@ -1,4 +1,5 @@
 const tabelaReceita = require('../models/tabelaReceita')
+const Op = require('sequelize').Op;
 
 module.exports = {
     listarTodasAsReceitas() {
@@ -21,6 +22,22 @@ module.exports = {
         }
 
         return encontrado;
+    },
+
+    async obterReceitasPorDescricao(descricao) {
+        const encontrados = await tabelaReceita.findAll({
+            where: {
+                descricao: {
+                    [Op.like]: `%${descricao}%`
+                }
+            }
+        });
+
+        if (!encontrados) {
+            throw new Error("Despesas não encontrada.");
+        }
+
+        return encontrados;
     },
 
     alterarReceita(id, receita) {

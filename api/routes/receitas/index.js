@@ -1,11 +1,21 @@
 const roteador = require('express').Router()
-const receitaRepo = require('../../../database/repository/receitas-repository')
+const receitaRepository = require('../../../database/repository/receitas-repository')
 const Receita = require('../../models/Receita')
 
-roteador.get('/receitas', async (req, res) => {
-    const resultado = await receitaRepo.listarTodasAsReceitas()
-
-    res.send(JSON.stringify(resultado))
+roteador.get('/despesas', async (req, res) => {
+    try {
+        const descricao = req.query.descricao;
+           
+        if (descricao == null) {
+            res.send(JSON.stringify(await receitaRepository.listarTodasAsReceitas()));
+        } else {
+            res.send(JSON.stringify(await receitaRepository.obterReceitasPorDescricao(descricao)));
+        }
+    } catch(erro){
+        res.send(JSON.stringify({
+            mensagem: erro.message
+        }));
+    }
 });
 
 roteador.post('/receitas', async (req, res) => {
@@ -27,7 +37,7 @@ roteador.post('/receitas', async (req, res) => {
 roteador.get('/receita/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        let receita = await receitaRepo.obterReceitaPorId(id);
+        let receita = await receitaRepository.obterReceitaPorId(id);
         console.log(receita);
 
         res.send(JSON.stringify(receita));
@@ -62,7 +72,7 @@ roteador.delete('/receita/:id', async (req, res) => {
         const id = req.params.id;
         const receita = new Receita({ id: id });
         
-        await receitaRepo.obterReceitaPorId(id);
+        await receitaRepository.obterReceitaPorId(id);
         await receita.remover();
 
         res.send(JSON.stringify({

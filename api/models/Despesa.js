@@ -2,18 +2,20 @@ const despesaRepository = require('../../database/repository/despesas-repository
 
 class Despesa {
     constructor({id, descricao, valor, data, categoria}) {
-        this.id = id,
-        this.descricao = descricao,
-        this.valor = valor,
-        this.data = data,
-        this.categoria = categoria
+        this.id = id;
+        this.descricao = descricao;
+        this.valor = valor;
+        this.data = data;
+
+        if (categoria == null) {
+            this.categoria = 'Outras'; 
+        } else {
+            this.categoria = categoria
+        }
+        
     }
 
     async criar() {
-        if (this.categoria == null) {
-            this.categoria = 'Outras'; 
-        }
-
         const resultado = await despesaRepository.criarDespesa({
             descricao: this.descricao,
             valor: this.valor,

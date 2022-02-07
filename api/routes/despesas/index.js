@@ -3,10 +3,21 @@ const despesasrepository = require('../../../database/repository/despesas-reposi
 const Despesa = require('../../models/Despesa')
 
 roteador.get('/despesas', async (req, res) => {
-    const resultado = await despesasrepository.listarTodasAsDespesas()
-
-    res.send(JSON.stringify(resultado))
+    try {
+        const descricao = req.query.descricao;
+           
+        if (descricao == null) {
+            res.send(JSON.stringify(await despesasrepository.listarTodasAsDespesas()));
+        } else {
+            res.send(JSON.stringify(await despesasrepository.obterDespesaPorDescricao(descricao)));
+        }
+    } catch(erro){
+        res.send(JSON.stringify({
+            mensagem: erro.message
+        }));
+    }
 });
+
 
 roteador.post('/despesas', async (req, res) => {
     try {
