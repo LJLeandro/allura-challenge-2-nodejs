@@ -19,6 +19,10 @@ const colunas = {
     data: {
         type: Sequilize.DATE,
         allowNull: false
+    },
+    categoria: {
+        type: Sequilize.STRING,
+        allowNull: false
     }
 }
 

@@ -20,9 +20,7 @@ roteador.post('/despesas', async (req, res) => {
         res.send(JSON.stringify({
             mensagem: error.message
         }));
-    }
-
-    
+    }s
 });
 
 roteador.get('/despesa/:id', async (req, res) => {

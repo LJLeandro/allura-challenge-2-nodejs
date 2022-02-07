@@ -1,7 +1,7 @@
 const despesaRepository = require('../../database/repository/despesas-repository');
 
 class Despesa {
-    constructor({id, descricao, valor, data, categoriaId}) {
+    constructor({id, descricao, valor, data, categoria}) {
         this.id = id,
         this.descricao = descricao,
         this.valor = valor,
@@ -41,7 +41,11 @@ class Despesa {
     }
 
     async validar() {
-        const campos = ['descricao', 'valor', 'data', 'categoriaId']
+        if (this.categoriaId == null) {
+            this.categoriaId 
+        }
+
+        const campos = ['descricao', 'valor', 'data']
 
         campos.forEach(campo => {
             const valor = this[campo];
