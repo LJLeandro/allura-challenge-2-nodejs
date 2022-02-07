@@ -6,15 +6,19 @@ class Despesa {
         this.descricao = descricao,
         this.valor = valor,
         this.data = data,
-        this.categoriaId = categoriaId
+        this.categoria = categoria
     }
 
     async criar() {
+        if (this.categoria == null) {
+            this.categoria = 'Outras'; 
+        }
+
         const resultado = await despesaRepository.criarDespesa({
             descricao: this.descricao,
             valor: this.valor,
             data: this.data,
-            categoriaId: this.categoriaId
+            categoria: this.categoria
         });
 
         this.id = resultado.id;
@@ -41,10 +45,6 @@ class Despesa {
     }
 
     async validar() {
-        if (this.categoriaId == null) {
-            this.categoriaId 
-        }
-
         const campos = ['descricao', 'valor', 'data']
 
         campos.forEach(campo => {

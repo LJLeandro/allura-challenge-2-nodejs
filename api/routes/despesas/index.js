@@ -11,7 +11,11 @@ roteador.get('/despesas', async (req, res) => {
 roteador.post('/despesas', async (req, res) => {
     try {
         const dadosRecebidos = req.body;
+        console.log(dadosRecebidos);
+        
         const despesa = new Despesa(dadosRecebidos);
+
+        
         await despesa.validar();
         await despesa.criar();
 
@@ -20,7 +24,7 @@ roteador.post('/despesas', async (req, res) => {
         res.send(JSON.stringify({
             mensagem: error.message
         }));
-    }s
+    }
 });
 
 roteador.get('/despesa/:id', async (req, res) => {
