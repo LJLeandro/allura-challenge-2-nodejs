@@ -2,7 +2,7 @@ const roteador = require('express').Router()
 const receitaRepository = require('../../../database/repository/receitas-repository')
 const Receita = require('../../models/Receita')
 
-roteador.get('/despesas', async (req, res) => {
+roteador.get('/receitas', async (req, res) => {
     try {
         const descricao = req.query.descricao;
            
@@ -11,6 +11,36 @@ roteador.get('/despesas', async (req, res) => {
         } else {
             res.send(JSON.stringify(await receitaRepository.obterReceitasPorDescricao(descricao)));
         }
+    } catch(erro){
+        res.send(JSON.stringify({
+            mensagem: erro.message
+        }));
+    }
+});
+
+roteador.get('/receita/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        let receita = await receitaRepository.obterReceitaPorId(id);
+        console.log(receita);
+
+        res.send(JSON.stringify(receita));
+    } catch(erro){
+        res.send(JSON.stringify({
+            mensagem: erro.message
+        }));
+    }
+});
+
+roteador.get('/receitas/:ano/:mes', async (req, res) => {
+    try {
+        const mes = req.params.mes;
+        const ano = req.params.ano;
+        
+        let receitas = await receitaRepository.obterReceitasPorMesAno(mes, ano);
+        console.log(receitas);
+
+        res.send(JSON.stringify(receitas));
     } catch(erro){
         res.send(JSON.stringify({
             mensagem: erro.message
@@ -32,20 +62,6 @@ roteador.post('/receitas', async (req, res) => {
         }))
     }
     
-});
-
-roteador.get('/receita/:id', async (req, res) => {
-    try {
-        const id = req.params.id;
-        let receita = await receitaRepository.obterReceitaPorId(id);
-        console.log(receita);
-
-        res.send(JSON.stringify(receita));
-    } catch(erro){
-        res.send(JSON.stringify({
-            mensagem: erro.message
-        }));
-    }
 });
 
 roteador.put('/receitas/:id', async (req, res) => {
@@ -84,5 +100,7 @@ roteador.delete('/receita/:id', async (req, res) => {
         }))
     }
 });
+
+
 
 module.exports = roteador;

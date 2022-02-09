@@ -52,6 +52,22 @@ roteador.get('/despesa/:id', async (req, res) => {
     }
 });
 
+roteador.get('/despesas/:ano/:mes', async (req, res) => {
+    try {
+        const mes = req.params.mes;
+        const ano = req.params.ano;
+        
+        let despesas = await despesasrepository.obterDesespesasPorMesAno(mes, ano);
+        console.log(despesas);
+
+        res.send(JSON.stringify(despesas));
+    } catch(erro){
+        res.send(JSON.stringify({
+            mensagem: erro.message
+        }));
+    }
+});
+
 roteador.put('/despesa/:id', async (req, res) => {
     try {
         const id = req.params.id;
