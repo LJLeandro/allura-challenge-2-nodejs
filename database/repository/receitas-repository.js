@@ -1,5 +1,6 @@
+const sequelize = require('sequelize');
 const tabelaReceita = require('../models/tabelaReceita')
-const Op = require('sequelize').Op;
+const Op = sequelize.Op;
 
 module.exports = {
     listarTodasAsReceitas() {
@@ -64,6 +65,26 @@ module.exports = {
         }
 
         return encontrados;
+    },
+
+    async obterValorTotalRecebidoNoMes(mes, ano) {
+        let mesInicio = mes;
+        let mesCorte = parseInt(mes) + 1;
+
+        const totalRecebidoNoMes = await tabelaReceita.findOne({
+            attributes: [
+                [sequelize.fn('sum', sequelize.col('valor')), 'valorTotal']
+            ],
+            where: {
+                data: {
+                    [Op.between]: [new Date(`${ano}-${mesInicio}-1 00:00:00`), 
+                                    new Date(`${ano}-${mesCorte}-1 00:00:00`)]
+                }
+            },
+            raw: true
+        })
+
+        return totalRecebidoNoMes.valorTotal;
     },
 
     alterarReceita(id, receita) {

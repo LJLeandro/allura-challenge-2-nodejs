@@ -1,5 +1,6 @@
+const sequelize = require('sequelize');
 const tabelaDespesa = require('../models/tabelaDespesa')
-const Op = require('sequelize').Op;
+const Op = sequelize.Op;
 
 module.exports = {
     listarTodasAsDespesas() {
@@ -34,6 +35,52 @@ module.exports = {
         }
 
         return encontrados;
+    },
+
+    async obterValorTotalGastoNoMes(mes, ano) {
+        let mesInicio = mes;
+        let mesCorte = parseInt(mes) + 1;
+
+        const totalGastoNoMes = await tabelaDespesa.findOne({
+            attributes: [
+                [sequelize.fn('sum', sequelize.col('valor')), 'valorTotal']
+            ],
+            where: {
+                data: {
+                    [Op.between]: [new Date(`${ano}-${mesInicio}-1 00:00:00`), 
+                                    new Date(`${ano}-${mesCorte}-1 00:00:00`)]
+                }
+            },
+            raw: true
+        })
+
+        return totalGastoNoMes.valorTotal;
+    },
+
+    async obterTotaldeDespesasAgrupadasPorCategoriaNoMes(mes, ano) {
+        let mesInicio = mes;
+        let mesCorte = parseInt(mes) + 1;
+
+        const resumoReceitasMes = await tabelaDespesa.findAll({
+            attributes: [
+                'categoria', 
+                [sequelize.fn('sum', sequelize.col('valor')), 'valorTotal']
+            ],
+            where: {
+                data: {
+                    [Op.between]: [new Date(`${ano}-${mesInicio}-1 00:00:00`), 
+                                    new Date(`${ano}-${mesCorte}-1 00:00:00`)]
+                }
+            },
+            group: 'categoria',
+            raw: true
+        });
+
+        if (!resumoReceitasMes) {
+            throw new Error("Despesas não encontrada.");
+        }
+
+        return resumoReceitasMes;
     },
 
     async obterDespesaPorId(id) {
