@@ -49,13 +49,63 @@
 			"response": []
 		},
 		{
+			"name": "receita - Receitas por descrição",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/orcamento/receita?descricao=salario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"orcamento",
+						"receita"
+					],
+					"query": [
+						{
+							"key": "descricao",
+							"value": "salario"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "receita - Receitas por Mês e Ano",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/orcamento/receitas/2022/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"orcamento",
+						"receitas",
+						"2022",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "receita - Nova Receita",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"descricao\": \"Bonus\",\r\n    \"valor\": \"3411\",\r\n    \"data\": \"2022/01/20\"\r\n}",
+					"raw": "{\r\n    \"descricao\": \"Salario Mensal\",\r\n    \"valor\": \"3411\",\r\n    \"data\": \"2022/01/20\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -182,6 +232,56 @@
 			"response": []
 		},
 		{
+			"name": "despesas - Despesas por descrição",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/orcamento/despesas?descricao=bsd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"orcamento",
+						"despesas"
+					],
+					"query": [
+						{
+							"key": "descricao",
+							"value": "bsd"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "despesa - Despesas por Mês e Ano",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/orcamento/despesas/2022/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"orcamento",
+						"despesas",
+						"2022",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "despesa - Alterar Despesa",
 			"request": {
 				"method": "PUT",
@@ -219,7 +319,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"descricao\": \"Cartao de Crédito - Nubank\",\r\n    \"valor\": \"2100\",\r\n    \"data\": \"2022/01/22\"\r\n}",
+					"raw": "{\r\n    \"descricao\": \"Ifood\",\r\n    \"valor\": \"50.10\",\r\n    \"data\": \"2022/01/22\",\r\n    \"categoria\": \"Transportes\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -259,6 +359,29 @@
 						"orcamento",
 						"despesa",
 						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "resumo - Resumo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/orcamento/resumo/2022/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"orcamento",
+						"resumo",
+						"2022",
+						"1"
 					]
 				}
 			},
