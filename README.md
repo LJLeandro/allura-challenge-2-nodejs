@@ -8,7 +8,7 @@ Para executar o programa será preciso instalar o docker executar os comandos ab
 
 $ docker pull mysql
 
-$ docker run --name orcamentodb -e MYSQL_ROOT_PASSWORD=<Sua Senha> -d -p 127.0.0.1:3306:3306 mysql:latest
+$ docker run --name orcamentodb -e MYSQL_ROOT_PASSWORD=Sua_Senha -d -p 127.0.0.1:3306:3306 mysql:latest
 
 <h2> Executando o Programa </h2>
 No terminal, no diretório do projeto execute o comando baixo para que as tabelas sejam criadas.
