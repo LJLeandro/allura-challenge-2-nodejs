@@ -18,7 +18,6 @@ roteador.get('/despesas', async (req, res) => {
     }
 });
 
-
 roteador.post('/despesas', async (req, res) => {
     try {
         const dadosRecebidos = req.body;

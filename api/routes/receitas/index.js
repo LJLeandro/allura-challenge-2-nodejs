@@ -55,11 +55,11 @@ roteador.post('/receitas', async (req, res) => {
         await novaReceita.validar();
         await novaReceita.criar();
 
-        res.send(JSON.stringify(novaReceita))
+        res.json(novaReceita);
     } catch (error) {
         res.send(JSON.stringify({
             mensagem: error.message
-        }))
+        })).status(500)
     }
     
 });
