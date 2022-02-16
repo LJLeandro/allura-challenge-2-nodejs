@@ -19,7 +19,7 @@ roteador.get('/despesas', valiacaoToken.validandoJWT, async (req, res) => {
     }
 });
 
-roteador.post('/despesas', async (req, res) => {
+roteador.post('/despesas', valiacaoToken.validandoJWT, async (req, res) => {
     try {
         const dadosRecebidos = req.body;
         console.log(dadosRecebidos);
@@ -38,7 +38,7 @@ roteador.post('/despesas', async (req, res) => {
     }
 });
 
-roteador.get('/despesa/:id', async (req, res) => {
+roteador.get('/despesa/:id', valiacaoToken.validandoJWT, async (req, res) => {
     try {
         const id = req.params.id;
         const despesa = await despesasrepository.obterDespesaPorId(id);
@@ -52,7 +52,7 @@ roteador.get('/despesa/:id', async (req, res) => {
     }
 });
 
-roteador.get('/despesas/:ano/:mes', async (req, res) => {
+roteador.get('/despesas/:ano/:mes', valiacaoToken.validandoJWT, async (req, res) => {
     try {
         const mes = req.params.mes;
         const ano = req.params.ano;
@@ -68,7 +68,7 @@ roteador.get('/despesas/:ano/:mes', async (req, res) => {
     }
 });
 
-roteador.put('/despesa/:id', async (req, res) => {
+roteador.put('/despesa/:id', valiacaoToken.validandoJWT, async (req, res) => {
     try {
         const id = req.params.id;
         const dadosRecebidos = req.body;
@@ -87,7 +87,7 @@ roteador.put('/despesa/:id', async (req, res) => {
     }
 })
 
-roteador.delete('/despesa/:id', async (req, res) => {
+roteador.delete('/despesa/:id', valiacaoToken.validandoJWT, async (req, res) => {
     try {
         const id = req.params.id;
         const despesa = new Despesa({ id: id });

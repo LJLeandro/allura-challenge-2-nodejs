@@ -14,5 +14,9 @@ module.exports = {
         }
 
         return usuario;
+    },
+
+    async criarUsuario(usuario) {
+        return tabelaUsuario.create(usuario);
     }
 }

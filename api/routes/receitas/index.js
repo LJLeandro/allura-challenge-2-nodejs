@@ -1,8 +1,9 @@
 const roteador = require('express').Router()
 const receitaRepository = require('../../../database/repository/receitas-repository')
 const Receita = require('../../models/Receita')
+const valiacaoToken = require('../../token')
 
-roteador.get('/receitas', async (req, res) => {
+roteador.get('/receitas', valiacaoToken.validandoJWT, async (req, res) => {
     try {
         const descricao = req.query.descricao;
            
@@ -18,7 +19,7 @@ roteador.get('/receitas', async (req, res) => {
     }
 });
 
-roteador.get('/receita/:id', async (req, res) => {
+roteador.get('/receita/:id', valiacaoToken.validandoJWT, async (req, res) => {
     try {
         const id = req.params.id;
         let receita = await receitaRepository.obterReceitaPorId(id);
@@ -32,7 +33,7 @@ roteador.get('/receita/:id', async (req, res) => {
     }
 });
 
-roteador.get('/receitas/:ano/:mes', async (req, res) => {
+roteador.get('/receitas/:ano/:mes', valiacaoToken.validandoJWT, async (req, res) => {
     try {
         const mes = req.params.mes;
         const ano = req.params.ano;
@@ -48,7 +49,7 @@ roteador.get('/receitas/:ano/:mes', async (req, res) => {
     }
 });
 
-roteador.post('/receitas', async (req, res) => {
+roteador.post('/receitas', valiacaoToken.validandoJWT, async (req, res) => {
     try {
         const dadosRecebidos = req.body
         const novaReceita = new Receita(dadosRecebidos);
@@ -64,7 +65,7 @@ roteador.post('/receitas', async (req, res) => {
     
 });
 
-roteador.put('/receitas/:id', async (req, res) => {
+roteador.put('/receitas/:id', valiacaoToken.validandoJWT, async (req, res) => {
     try {
         const id = req.params.id;
         const dadosRecebidos = req.body;
@@ -83,7 +84,7 @@ roteador.put('/receitas/:id', async (req, res) => {
     }
 })
 
-roteador.delete('/receita/:id', async (req, res) => {
+roteador.delete('/receita/:id',  valiacaoToken.validandoJWT,async (req, res) => {
     try {
         const id = req.params.id;
         const receita = new Receita({ id: id });

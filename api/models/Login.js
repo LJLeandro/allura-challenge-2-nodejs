@@ -7,6 +7,10 @@ class Login {
         this.senha = senha;
     }
 
+    async criar() {
+        loginRepository.criarUsuario(this);
+    }
+
     async validarAcesso() {
         let usuario = await loginRepository.obterLogin(this.login);
 

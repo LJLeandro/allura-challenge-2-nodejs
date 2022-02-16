@@ -1,8 +1,9 @@
 const roteador = require('express').Router()
 const receitaRepository = require('../../../database/repository/receitas-repository')
 const despesaRepository = require('../../../database/repository/despesas-repository')
+const valiacaoToken = require('../../token')
 
-roteador.get('/resumo/:ano/:mes', async (req, res) => {
+roteador.get('/resumo/:ano/:mes', valiacaoToken.validandoJWT, async (req, res) => {
     try {
         const mes = req.params.mes;
         const ano = req.params.ano;

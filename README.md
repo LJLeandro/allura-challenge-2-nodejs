@@ -13,7 +13,13 @@ $ docker run --name orcamentodb -e MYSQL_ROOT_PASSWORD=Sua_Senha -d -p 127.0.0.1
 <h2> Executando o Programa </h2>
 No terminal, no diretório do projeto execute o comando baixo para que as tabelas sejam criadas.
 
-$ node database\criar-tabela.js
+$ npm run db
 
 <h2> Testando a API </h2>
-Na pasta Test, se encontram os teste feitos pelo Postman.
+Na pasta Test, se encontram os teste feitos pelo Postman. Os testes automatizados estão em jest, para executa-los execute o comando
+
+$ npm test
+
+<h2> Executando a API </h2>
+
+$ npm start
