@@ -1,8 +1,9 @@
 const roteador = require('express').Router()
 const despesasrepository = require('../../../database/repository/despesas-repository');
 const Despesa = require('../../models/Despesa')
+const valiacaoToken = require('../../token')
 
-roteador.get('/despesas', async (req, res) => {
+roteador.get('/despesas', valiacaoToken.validandoJWT, async (req, res) => {
     try {
         const descricao = req.query.descricao;
            
