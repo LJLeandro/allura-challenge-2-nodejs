@@ -13,6 +13,4 @@ app.use('/api/orcamento', roteadorReceita);
 app.use('/api/orcamento', roteadorDespesa);
 app.use('/api/orcamento', roteadorResumo);
 
-app.listen(config.get('api.porta'), () => console.log('A API está funcionado'));
-
-module.exports = app;
+module.exports = app
