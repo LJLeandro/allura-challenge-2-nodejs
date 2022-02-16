@@ -188,7 +188,13 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY0NDk4NDQyNywiZXhwIjoxNjQ0OTg0NzI3fQ.PMXW933c5CvBbA4LXF3wbS9oDdHS_8KI0F3vbVRK2UE",
+						"type": "default"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": ""
@@ -382,6 +388,66 @@
 						"resumo",
 						"2022",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login - Login + Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"lucas\",\r\n    \"senha\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/orcamento/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"orcamento",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login - Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"teste\",\r\n    \"senha\": \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/orcamento/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"orcamento",
+						"login"
 					]
 				}
 			},
